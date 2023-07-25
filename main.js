@@ -14,12 +14,13 @@ for (let i = 1; i <= 16; i++) {
 
 function hover(element, enter, leave) {
     element.addEventListener('mouseenter', enter);
-    element.addEventListener('mouseleave', leave);
+    // element.addEventListener('mouseleave', leave);
 }
 
 hover(document.querySelector('.newSquare'), e => {
-    e.target.classList.add('hover')
-}), e => {
-    e.target.classList.remove('hover')
-}
+    e.target.classList.toggle('hover')
+})
+// }), e => {
+//     e.target.classList.remove('hover')
+// }
 
