@@ -23,7 +23,7 @@
     flex-wrap: wrap;
 
   }
-  .container > div {
+  .newSquare {
     border: 1px solid black;
     width: 100px;
     height: 100px;
