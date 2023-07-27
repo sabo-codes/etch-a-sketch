@@ -12,23 +12,8 @@ for (let i = 1; i <= 16; i++) {
     container.appendChild(newDiv);
 }
 
-// const newSquare = document.querySelectorAll('.newSquare');
+const newSquares = document.querySelectorAll('.newSquare');
 
-// console.log(newSquare)
-// newSquare.forEach(element => element.addEventListener('mouseenter', hover));
+newSquares.forEach(e => e.addEventListener('mouseover', () => e.classList.add('hover')));
 
-// function hover(element) {
-//     element.querySelector('.newSquare').style.backgroundColor = 'black';
-// }
-
-function hover(element, enter, leave) {
-    element.addEventListener('mouseover', enter);
-    element.addEventListener('mouseleave', leave);
-}
-
-hover(document.querySelector('.newSquare'), e => {
-    e.target.classList.toggle('hover')
-}), e => {
-    e.target.classList.remove('hover')
-}
-
+newSquares.forEach(e => e.addEventListener('click', () => e.classList.remove('hover')));
