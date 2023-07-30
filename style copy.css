@@ -27,7 +27,7 @@
     display: grid;
     height: 600px;
     width: 600px;
-    border: 1px solid rgb(156, 156, 156);
+    border: 1px solid black;
   }
 
   .wrapper {
@@ -53,4 +53,26 @@
   /******************************************
   /* ADDITIONAL STYLES
   /*******************************************/
-  
+  .container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 50rem;
+  }
+
+  .newSquare {
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+  }
+
+  .hover {
+    background-color: black;
+    border: 1px solid white;
+  }

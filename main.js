@@ -1,49 +1,45 @@
-const square = document.createElement('div');
 const grid = document.querySelector('.grid');
-let numOfSides = 0;
 
-for (let i = 1; i <= 16; i++) {
-    for (let j = 1; j <= 16; j++) {
-        let newDiv = document.createElement('div');
-        newDiv.classList.add('newSquare');
-        grid.appendChild(newDiv);
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
+
+function setGridSize(size) {
+    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
+    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`
+
+    for (let i = 1; i <= size * size; i++) {
+        const gridSquare = document.createElement('div');
+        gridSquare.classList.add('grid-square');
+        gridSquare.addEventListener('mouseover', hover)
+        gridSquare.addEventListener('mousedown', hover)
+        grid.appendChild(gridSquare);
     }
 }
 
-const newSquares = document.querySelectorAll('.newSquare');
-console.log(newSquares)
-
-// newSquares.forEach(e => e.addEventListener('mouseover', () => e.classList.add('hover')));
-
-// newSquares.forEach(e => e.addEventListener('click', () => e.classList.remove('hover')));
-
-// let mouseDown = false
-// document.body.onmousedown = () => (mouseDown = true)
-// document.body.onmouseup = () => (mouseDown = false)
-
-// newSquares.forEach(e => e.addEventListener('mouseover', () => e.classList.add('hover')));
-newSquares.forEach(e => e.addEventListener('mousedown', () => e.classList.add('hover')));
-// newSquares.forEach(e => e.addEventListener('mouseover', () => e.classList.add('hover')));
-
-
-
-const promptBtn = document.querySelector('.prompt-btn')
-promptBtn.addEventListener('click', userDecides);
-
-function userDecides () {
-    do {
-    numOfSides = Number(prompt("Enter number of sides: "));
-    console.log(numOfSides)
+function hover(e) {
+    if (e.type === 'mouseover' && mouseDown) {
+    e.target.style.backgroundColor = "black";
+    console.log(e.type);
+    console.log(e.target)
+    } else {
+        return;
     }
-    while (numOfSides > 100)
+}
 
+setGridSize(16);
+
+document.querySelector('button').addEventListener('click', changeGridSize);
+
+
+function changeGridSize () {
     grid.innerHTML = "";
 
-    for (let i = 1; i <= numOfSides; i++) {
-        for (let j = 1; j <= numOfSides; j++) {
-            let newDiv = document.createElement('div');
-            newDiv.classList.add('newSquare');
-            grid.appendChild(newDiv);
-        }
+    const gridInput = document.querySelector('input').value;
+
+    if (gridInput > 100 || gridInput < 1) {
+        alert('Enter number between 1 and 100.');
+    } else {
+        setGridSize(gridInput);
     }
 }
