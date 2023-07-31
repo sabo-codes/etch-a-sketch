@@ -14,11 +14,15 @@
     font-family: 'Roboto', sans-serif;
   }
   
-  
   .container {
     display: flex;
     justify-content: center;
     gap: 10px;
+  }
+
+  .controls {
+    display:flex;
+    flex-direction: column;
   }
 
   .grid {
@@ -39,6 +43,10 @@
 
   p {
     margin: 0;
+  }
+
+  .clear-btn, .erase-btn {
+    margin-top: 20px;
   }
 
   /******************************************
