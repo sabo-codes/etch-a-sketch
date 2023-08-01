@@ -27,6 +27,14 @@ function paintGrid(e) {
     } else {
         e.target.style.backgroundColor = "black";
         console.log(mouseDown)
+        if (e.target.style.backgroundColor === "black") {
+            const paintedSquares = document.querySelectorAll('.grid-square');
+            
+            paintedSquares.forEach(e => e.addEventListener('click', () => e.style.backgroundColor = 'white'))
+        }
+        if (colorButton.onclick === true) {
+            changeColor();
+        }
     }
 }
 
@@ -47,12 +55,46 @@ function changeGridSize () {
     }
 }
 
+const clear = document.querySelector('.clear-btn');
+clear.addEventListener('click', clearGrid);
+
 function clearGrid() {
     const paintedSquares = document.querySelectorAll('.grid-square');
 
     paintedSquares.forEach(e => e.style.backgroundColor = "white");
 }
 
-const clear = document.querySelector('.clear-btn');
-clear.addEventListener('click', clearGrid);
 
+const colorButton = document.querySelector('.color-btn')
+
+const r = Math.floor(Math.random() * 257);
+const g = Math.floor(Math.random() * 257);
+const b = Math.floor(Math.random() * 257);
+const rgb = 'rgb('+ r + ',' + g + ',' + b +')';
+
+
+colorButton.addEventListener('click', changeColor);
+
+// colorButton.onclick = function() {
+//     if (!mouseDown && e.type === 'mouseover') {
+//         return;
+//     } else {
+//         e.target.style.backgroundColor = rgb;
+//         console.log(e)
+//         if (e.target.style.backgroundColor === 'black') {
+//             const paintedSquares = document.querySelectorAll('.grid-square');
+            
+//             paintedSquares.forEach(e => e.addEventListener('click', () => e.style.backgroundColor = 'white'))
+//         }
+//     }
+// }
+
+function changeColor(e) {
+        e.target.style.backgroundColor = rgb;
+        console.log(e)
+        if (e.target.style.backgroundColor === rgb) {
+            const paintedSquares = document.querySelectorAll('.grid-square');
+            
+            paintedSquares.forEach(e => e.addEventListener('click', () => e.style.backgroundColor = 'white'))
+        }
+    }
