@@ -1,5 +1,16 @@
 const grid = document.querySelector('.grid');
+const clear = document.querySelector('.clear-btn');
+clear.addEventListener('click', clearGrid);
+const defaultColor = document.querySelector('.default-btn')
+defaultColor.addEventListener('click', setDefaultPaint)
+const colorButton = document.querySelector('.color-btn')
+colorButton.addEventListener('click', setRainbowPaint);
+
 let currentColor = "black";
+
+document.querySelector('.submit').addEventListener('click', changeGridSize);
+
+setGridSize(16);
 
 let mouseDown = false;
 document.body.onmousedown = function(){
@@ -22,13 +33,15 @@ function setGridSize(size) {
     }
 }
 
-const colorButton = document.querySelector('.color-btn')
-colorButton.addEventListener('click', changeColor);
-
-function changeColor() {
+function setRainbowPaint() {
     currentColor = "rgb";
+    console.log(currentColor)
 }
-console.log(currentColor)
+
+function setDefaultPaint() {
+    currentColor = "black";
+    console.log(currentColor)
+}
 
 function paintGrid(e) {
     if (!mouseDown && e.type === 'mouseover') {
@@ -42,47 +55,28 @@ function paintGrid(e) {
 
         e.target.style.backgroundColor = rgb;
         console.log(currentColor)
-
-        if (e.target.style.backgroundColor === currentColor) {
-            console.log(currentColor)
-            const paintedSquares = document.querySelectorAll('.grid-square');
-            console.log(paintedSquares)
-                
-            paintedSquares.forEach(e => e.addEventListener('click', () => e.style.backgroundColor = 'white'))
-        }
     } else if (currentColor === "black") {
         e.target.style.backgroundColor = currentColor;
         console.log(currentColor);
-        if (e.target.style.backgroundColor === currentColor) {
-            const paintedSquares = document.querySelectorAll('.grid-square');
-                
-            paintedSquares.forEach(e => e.addEventListener('click', () => e.style.backgroundColor = 'white'))
-        }
     } 
+    if (e.target.style.backgroundColor === currentColor) {
+        const paintedSquares = document.querySelectorAll('.grid-square');
+            
+        paintedSquares.forEach(e => e.addEventListener('click', () => e.style.backgroundColor = 'white'))
+    }
 }
 
-setGridSize(16);
-
-const defaultColor = document.querySelector('.default-btn')
-defaultColor.addEventListener('click', paintGrid)
-
-document.querySelector('.submit').addEventListener('click', changeGridSize);
-
-
 function changeGridSize () {
-    grid.innerHTML = "";
 
     const gridInput = document.querySelector('input').value;
 
     if (gridInput > 100 || gridInput < 1) {
         alert('Enter number between 1 and 100.');
     } else {
+        grid.innerHTML = "";
         setGridSize(gridInput);
     }
 }
-
-const clear = document.querySelector('.clear-btn');
-clear.addEventListener('click', clearGrid);
 
 function clearGrid() {
     const paintedSquares = document.querySelectorAll('.grid-square');
