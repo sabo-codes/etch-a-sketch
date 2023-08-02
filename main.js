@@ -1,4 +1,5 @@
 const grid = document.querySelector('.grid');
+let currentColor = "black";
 
 let mouseDown = false;
 document.body.onmousedown = function(){
@@ -21,24 +22,49 @@ function setGridSize(size) {
     }
 }
 
+const colorButton = document.querySelector('.color-btn')
+colorButton.addEventListener('click', changeColor);
+
+function changeColor() {
+    currentColor = "rgb";
+}
+console.log(currentColor)
+
 function paintGrid(e) {
     if (!mouseDown && e.type === 'mouseover') {
         return;
-    } else {
-        e.target.style.backgroundColor = "black";
-        console.log(mouseDown)
-        if (e.target.style.backgroundColor === "black") {
+    }
+    if (currentColor === "rgb") {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        const rgb = 'rgb('+ r + ',' + g + ',' + b +')';
+
+        e.target.style.backgroundColor = rgb;
+        console.log(currentColor)
+
+        if (e.target.style.backgroundColor === currentColor) {
+            console.log(currentColor)
             const paintedSquares = document.querySelectorAll('.grid-square');
-            
+            console.log(paintedSquares)
+                
             paintedSquares.forEach(e => e.addEventListener('click', () => e.style.backgroundColor = 'white'))
         }
-        if (colorButton.onclick === true) {
-            changeColor();
+    } else if (currentColor === "black") {
+        e.target.style.backgroundColor = currentColor;
+        console.log(currentColor);
+        if (e.target.style.backgroundColor === currentColor) {
+            const paintedSquares = document.querySelectorAll('.grid-square');
+                
+            paintedSquares.forEach(e => e.addEventListener('click', () => e.style.backgroundColor = 'white'))
         }
-    }
+    } 
 }
 
 setGridSize(16);
+
+const defaultColor = document.querySelector('.default-btn')
+defaultColor.addEventListener('click', paintGrid)
 
 document.querySelector('.submit').addEventListener('click', changeGridSize);
 
@@ -64,37 +90,3 @@ function clearGrid() {
     paintedSquares.forEach(e => e.style.backgroundColor = "white");
 }
 
-
-const colorButton = document.querySelector('.color-btn')
-
-const r = Math.floor(Math.random() * 257);
-const g = Math.floor(Math.random() * 257);
-const b = Math.floor(Math.random() * 257);
-const rgb = 'rgb('+ r + ',' + g + ',' + b +')';
-
-
-colorButton.addEventListener('click', changeColor);
-
-// colorButton.onclick = function() {
-//     if (!mouseDown && e.type === 'mouseover') {
-//         return;
-//     } else {
-//         e.target.style.backgroundColor = rgb;
-//         console.log(e)
-//         if (e.target.style.backgroundColor === 'black') {
-//             const paintedSquares = document.querySelectorAll('.grid-square');
-            
-//             paintedSquares.forEach(e => e.addEventListener('click', () => e.style.backgroundColor = 'white'))
-//         }
-//     }
-// }
-
-function changeColor(e) {
-        e.target.style.backgroundColor = rgb;
-        console.log(e)
-        if (e.target.style.backgroundColor === rgb) {
-            const paintedSquares = document.querySelectorAll('.grid-square');
-            
-            paintedSquares.forEach(e => e.addEventListener('click', () => e.style.backgroundColor = 'white'))
-        }
-    }

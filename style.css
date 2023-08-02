@@ -13,6 +13,10 @@
   body {
     font-family: 'Roboto', sans-serif;
   }
+
+  h1 {
+    text-align: center;
+  }
   
   .container {
     display: flex;
@@ -45,8 +49,13 @@
     margin: 0;
   }
 
-  .clear-btn, .color-btn {
+.erase {
     margin-top: 20px;
+  }
+
+  .clear-btn, .default-btn, .color-btn {
+    margin-top: 20px;
+    width: 100px;
   }
 
   /******************************************
