@@ -1,14 +1,14 @@
 const grid = document.querySelector('.grid');
 const clear = document.querySelector('.clear-btn');
-clear.addEventListener('click', clearGrid);
 const defaultColor = document.querySelector('.default-btn')
-defaultColor.addEventListener('click', setDefaultPaint)
 const colorButton = document.querySelector('.color-btn')
-colorButton.addEventListener('click', setRainbowPaint);
 
 let currentColor = "black";
 
 document.querySelector('.submit').addEventListener('click', changeGridSize);
+defaultColor.addEventListener('click', setDefaultPaint);
+clear.addEventListener('click', clearGrid);
+colorButton.addEventListener('click', setRainbowPaint);
 
 setGridSize(16);
 
