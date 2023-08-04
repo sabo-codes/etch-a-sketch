@@ -20,6 +20,7 @@ document.body.onmouseup = function(){
     mouseDown = false;
 };
 
+
 function setGridSize(size) {
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`
@@ -43,6 +44,7 @@ function setDefaultPaint() {
     console.log(currentColor)
 }
 
+//paints grid depending on current paint color
 function paintGrid(e) {
     if (!mouseDown && e.type === 'mouseover') {
         return;
