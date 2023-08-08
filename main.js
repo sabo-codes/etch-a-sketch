@@ -12,6 +12,7 @@ colorButton.addEventListener('click', setRainbowPaint);
 
 setGridSize(16);
 
+//set initial state of mousedown
 let mouseDown = false;
 document.body.onmousedown = function(){
     mouseDown = true;
@@ -36,12 +37,10 @@ function setGridSize(size) {
 
 function setRainbowPaint() {
     currentColor = "rgb";
-    console.log(currentColor)
 }
 
 function setDefaultPaint() {
     currentColor = "black";
-    console.log(currentColor)
 }
 
 //paints grid depending on current paint color
@@ -56,10 +55,8 @@ function paintGrid(e) {
         const rgb = 'rgb('+ r + ',' + g + ',' + b +')';
 
         e.target.style.backgroundColor = rgb;
-        console.log(currentColor)
     } else if (currentColor === "black") {
         e.target.style.backgroundColor = currentColor;
-        console.log(currentColor);
     } 
     if (e.target.style.backgroundColor === currentColor) {
         const paintedSquares = document.querySelectorAll('.grid-square');
