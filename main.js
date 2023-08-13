@@ -3,7 +3,6 @@ const clear = document.querySelector('.clear-btn');
 const defaultColor = document.querySelector('.default-btn')
 const colorButton = document.querySelector('.color-btn')
 
-//set current color of painter
 let currentColor = "black";
 
 document.querySelector('.submit').addEventListener('click', changeGridSize);
