@@ -10,6 +10,7 @@ defaultColor.addEventListener('click', setDefaultPaint);
 clear.addEventListener('click', clearGrid);
 colorButton.addEventListener('click', setRainbowPaint);
 
+//set initial grid size 
 setGridSize(16);
 
 //set initial state of mousedown
